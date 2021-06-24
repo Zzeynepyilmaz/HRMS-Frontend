@@ -7,31 +7,33 @@ import JobAdvertisementList from "../pages/JobAdvertisementList";
 export default function Dashboard() {
   return (
     <div>
-       <Grid >
+      <Grid>
         <Grid.Row>
           <Grid.Column width={4}>
-            <CityList/>
+            <CityList />
             <br></br>
             <div class="myBox">
-        <Segment inverted color='black' as="h3">Çalışma Şekli</Segment>
-        <Segment.Group as="h3" attached="top">
-          <Segment textAlign="left">
-            <Checkbox label="Sürekli/Tam Zamanlı" />
-          </Segment>
-          <Segment textAlign="left">
-            <Checkbox label="Yarı Zamanlı/Part Time" />
-          </Segment>
-          <Segment textAlign="left">
-            <Checkbox label="Stajyer" />
-          </Segment>
-          <Segment textAlign="left">
-            <Checkbox label="Serbest Zamanlı" />
-          </Segment>
-        </Segment.Group>
-      </div>
-      <br></br>
+              <Segment inverted color="black" as="h3">
+                Çalışma Şekli
+              </Segment>
+              <Segment.Group as="h3" attached="top">
+                <Segment textAlign="left">
+                  <Checkbox label="Sürekli/Tam Zamanlı" />
+                </Segment>
+                <Segment textAlign="left">
+                  <Checkbox label="Yarı Zamanlı/Part Time" />
+                </Segment>
+                <Segment textAlign="left">
+                  <Checkbox label="Stajyer" />
+                </Segment>
+                <Segment textAlign="left">
+                  <Checkbox label="Serbest Zamanlı" />
+                </Segment>
+              </Segment.Group>
+            </div>
+            <br></br>
             <JobPositionList />
-            <JobAdvertisementList style={{ direction:"right",  width: "200px", height: "30px" }}/>
+            <JobAdvertisementList />
           </Grid.Column>
         </Grid.Row>
       </Grid>

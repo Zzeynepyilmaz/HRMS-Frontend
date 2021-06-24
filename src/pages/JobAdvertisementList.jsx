@@ -13,7 +13,7 @@ export default function JobAdvertisements() {
 
   return (
     <div>
-      <Table celled color={"black"}>
+      <Table  celled color={"black"}>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Şirket Adı</Table.HeaderCell>
