@@ -10,9 +10,9 @@ export default function CityList() {
   }, []);
   return (
     <div>
-      <Segment.Group>
+      <Segment.Group >
         <Segment inverted color='black' as="h3">Şehir</Segment>
-        <Segment> 
+        <Segment > 
           <select style={{ width: "200px", height: "30px" }}>
             {cities.map((city) => (
               <option key={city.id}>{city.cityName}</option>
