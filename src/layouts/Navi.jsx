@@ -1,35 +1,36 @@
-import React from "react";
-import { Button, Container, Menu, Input } from "semantic-ui-react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { Container, Menu, Input } from "semantic-ui-react";
+import SignIn from "./SignIn";
+import SignOut from "./SignOut";
 
 function Navi() {
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
+
+  const history = useHistory();
+
+  function handleSignOut() {
+    setIsAuthenticated(false);
+    history.push("/");
+  }
+
+  function handleSignIn() {
+    setIsAuthenticated(true);
+  }
+
   return (
     <div>
-      <Menu size="large" inverted color='black'>
+      <Menu size="large" inverted color="black">
         <Menu.Item name="İNSAN KAYNAKLARI YÖNETİM SİSTEMİ" />
         <Container>
           <Menu.Menu position="right">
-            <Menu.Item>
-              <Button inverted>Sign Up</Button>
-              <Button inverted>Sign In</Button>
-            </Menu.Item>
+            {isAuthenticated ? (
+              <SignIn signOut={handleSignOut} />
+            ) : (
+              <SignOut signIn={handleSignIn} />
+            )}
           </Menu.Menu>
         </Container>
-      </Menu>
-      
-      <Menu >
-        <Menu.Item>
-          <Input className="icon" icon="search" placeholder="Pozisyon ara" />
-        
-        <Menu.Item position="left">
-          <Input
-            className="icon"
-            icon="search"
-            action={{ type: "submit" }}
-            placeholder="Şehir ara"
-          />
-          <Button primary>İş ara</Button>
-        </Menu.Item>
-        </Menu.Item>
       </Menu>
     </div>
   );

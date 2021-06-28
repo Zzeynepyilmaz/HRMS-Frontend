@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Segment } from "semantic-ui-react";
 import CityService from "../services/cityService";
 
-export default function CityList() {
+export default function CityList(){
   const [cities, setCities] = useState([]);
   useEffect(() => {
     let cityService = new CityService();
