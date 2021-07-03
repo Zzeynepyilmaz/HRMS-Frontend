@@ -26,7 +26,7 @@ export default function Dashboard() {
                   <Checkbox label="Stajyer" />
                 </Segment>
                 <Segment textAlign="left">
-                  <Checkbox label="Serbest Zamanlı" />
+                  <Checkbox label="Proje Bazlı" />
                 </Segment>
               </Segment.Group>
             </div>

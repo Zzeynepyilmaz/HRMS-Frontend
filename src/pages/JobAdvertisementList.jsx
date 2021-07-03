@@ -1,46 +1,89 @@
 import React, { useEffect, useState } from "react";
 import JobAdvertisementService from "../services/jobAdvertisementService";
-import { Item, Image } from "semantic-ui-react";
+import { Image, Button, Segment } from "semantic-ui-react";
+import { NavLink } from "react-router-dom";
 
-export default function JobAdvertisements() {
-  const [advertisements, setAdvertisements] = useState([]);
+export default function JobAdvertisementList() {
+  const [jobAdvertisements, setJobAdvertisements] = useState([]);
+
   useEffect(() => {
     let jobAdvertisementService = new JobAdvertisementService();
     jobAdvertisementService
       .getAdvertisements()
-      .then((result) => setAdvertisements(result.data.data));
+      .then((result) => setJobAdvertisements(result.data.data));
   }, []);
 
   return (
     <div>
-      <Item.Group>
-        <Item>
-          <Item.Image
-            size="tiny"
-            src="https://react.semantic-ui.com/images/wireframe/image.png"
-          />
-
-          <Item.Content>
-            <Item.Header as="a">
-              {advertisements.map((advertisement) => (
-                <option key={advertisement.id}>
-                  {advertisement.jobPosition.position}
-                </option>
-              ))}
-            </Item.Header>
-            <Item.Meta>
-              {advertisements.map((advertisement) => (
-                <option key={advertisement.id}>
-                  {advertisement.city.cityName}
-                </option>
-              ))}
-            </Item.Meta>
-            <Item.Description>
-              <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />
-            </Item.Description>
-          </Item.Content>
-        </Item>
-      </Item.Group>
+      <div style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
+        {jobAdvertisements.map((jobAdvertisement) => (
+          <Segment.Group piled>
+            <Segment style={{ backgroundColor: "black" }}>
+              <h3
+                style={{
+                  backgroundColor: "black",
+                  color: "white",
+                  textAlign: "left",
+                  marginLeft: "1em",
+                  fontFamily: "Arial, Helvetica, sans-serif",
+                }}
+              >
+                İş İlanı - {jobAdvertisement.jobPosition.position}
+              </h3>
+            </Segment>
+            <Segment>
+              <Segment.Group horizontal>
+                <div
+                  style={{ margin: "1em", marginLeft: "1em", marginTop: "3em" }}
+                >
+                  <Image
+                    src="https://react.semantic-ui.com/images/avatar/large/matthew.png"
+                    size="mini"
+                  />
+                </div>
+                <Segment>
+                  <div
+                    style={{
+                      textAlign: "left",
+                      fontFamily: "Arial, Helvetica, sans-serif",
+                    }}
+                    key={jobAdvertisement.jobAdvertisementId}
+                  >
+                    <h2 style={{ marginLeft: "0.5em" }}>
+                      {jobAdvertisement.jobPosition.position}
+                    </h2>
+                    <p style={{ marginLeft: "1em", marginTop: "1em" }}>
+                      {" "}
+                      {jobAdvertisement.city.cityName}
+                    </p>
+                    <p
+                      style={{
+                        marginLeft: "1em",
+                        marginTop: "1em",
+                        marginBottom: "1em",
+                      }}
+                    >
+                      {jobAdvertisement.employer.companyName}
+                    </p>
+                    <Button
+                    
+                      as={NavLink}
+                      to={`/jobAdvertisement/${jobAdvertisement.jobAdvertisementId}`}
+                      style={{
+                        backgroundColor: "purple",
+                        color: "white",
+                        marginLeft: "1em",
+                      }}
+                    >
+                      İncele{" "}
+                    </Button>
+                  </div>
+                </Segment>
+              </Segment.Group>{" "}
+            </Segment>
+          </Segment.Group>
+        ))}
+      </div>
     </div>
   );
 }

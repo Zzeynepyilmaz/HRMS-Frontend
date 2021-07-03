@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Container, Menu, Input } from "semantic-ui-react";
+import { Container, Menu } from "semantic-ui-react";
 import SignIn from "./SignIn";
 import SignOut from "./SignOut";
 
@@ -20,7 +20,7 @@ function Navi() {
 
   return (
     <div>
-      <Menu size="large" inverted color="black">
+      <Menu size="big" inverted color="black">
         <Menu.Item name="İNSAN KAYNAKLARI YÖNETİM SİSTEMİ" />
         <Container>
           <Menu.Menu position="right">

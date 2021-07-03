@@ -1,7 +1,7 @@
 import React from "react";
 import { Dropdown, Image, Menu } from "semantic-ui-react";
 
-export default function SignIn({signOut}) {
+export default function SignIn({ signOut }) {
   return (
     <div>
       <Menu.Item>
